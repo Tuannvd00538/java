@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -10,27 +11,71 @@
    <children>
       <Pane fx:id="startPage" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <ImageView fitHeight="335.0" fitWidth="405.0" layoutX="298.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="163.0" fitWidth="320.0" layoutX="354.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/genk.png" />
+                  <Image url="@img/logo.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="239.0" prefHeight="61.0" prefWidth="314.0" text="Genk.vn Reader Version 1">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="288.0" prefHeight="61.0" prefWidth="314.0" text="Siin Reader Version 1">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="426.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="425.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/load.gif" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="articlePage" prefHeight="600.0" prefWidth="1000.0" visible="false">
+      <Pane fx:id="choice" prefHeight="600.0" prefWidth="1000.0" visible="false">
          <children>
-            <ListView fx:id="listArticles" layoutX="14.0" layoutY="14.0" prefHeight="563.0" prefWidth="972.0" />
-            <Label alignment="CENTER" layoutX="357.0" layoutY="580.0" prefHeight="17.0" prefWidth="287.0" text="Double click to select the article" />
+            <ImageView fx:id="genk" fitHeight="163.0" fitWidth="150.0" layoutX="187.0" layoutY="225.0" onMouseClicked="#genk" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/genk.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="vnexpress" fitHeight="150.0" fitWidth="336.0" layoutX="434.0" layoutY="225.0" onMouseClicked="#vnexpress" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/vnexpress.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="dantri" fitHeight="150.0" fitWidth="150.0" layoutX="668.0" layoutY="225.0" onMouseClicked="#dantri" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/dantri.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="articlePageGenk" prefHeight="600.0" prefWidth="1000.0" visible="false">
+         <children>
+            <ListView fx:id="listArticles" layoutX="14.0" layoutY="14.0" prefHeight="563.0" prefWidth="972.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ListView>
+            <Label alignment="CENTER" layoutX="282.0" layoutY="580.0" prefHeight="17.0" prefWidth="436.0" text="Double click to select the article - Copyright © Ngô Văn Tuấn" />
+         </children>
+      </Pane>
+      <Pane fx:id="detailPage" prefHeight="600.0" prefWidth="1000.0" visible="false">
+         <children>
+            <TextFlow fx:id="content" layoutX="14.0" layoutY="14.0" prefHeight="528.0" prefWidth="972.0" style="-fx-background-color: #fff;" />
+            <Button fx:id="truoc" layoutX="14.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: red;" text="Quay lại" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </children>

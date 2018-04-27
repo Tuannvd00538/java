@@ -10,6 +10,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -24,8 +25,10 @@ public class BotView extends Application{
         Parent root = fxmlloader.load();
         fxmlloader.<BotController>getController().getArticles();
         Scene scene = new Scene(root, 1000, 600);
-        stage.setTitle("Genk.vn Reader");
+        stage.setTitle("Siin Reader");
+//        stage.setResizable(false);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(BotView.class.getResourceAsStream("./img/icon.png")));
         stage.show();
     }
 
