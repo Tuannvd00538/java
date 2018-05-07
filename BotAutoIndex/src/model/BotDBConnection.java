@@ -14,6 +14,7 @@ import java.sql.SQLException;
  * @author biidz
  */
 public class BotDBConnection {
+
     private Connection cnn = null;
     private final String CONNECTION_URL = "jdbc:mysql://localhost:3306/";
     private final String DATABASE = "bot";
@@ -21,14 +22,14 @@ public class BotDBConnection {
     private final String PASSWORD = "";
     private final String UTF8_URL = "?useUnicode=true&characterEncoding=utf-8";
     public static BotDBConnection instance;
-    
+
     public static BotDBConnection getInstance() {
         if (null == instance) {
             instance = new BotDBConnection();
         }
         return instance;
     }
-    
+
     public Connection getConnection() {
         try {
             if (null == cnn || cnn.isClosed()) {

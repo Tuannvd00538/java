@@ -27,18 +27,19 @@ import org.jsoup.select.Elements;
  * @author Ngo Van Tuan
  */
 public class BotModel {
+
     public static ArrayList<Bot> articles = new ArrayList<>(Arrays.asList());
-    
+
     Scanner input = new Scanner(System.in);
-    
-    public void getIndex () {
+
+    public void getIndex() {
         BotController ctrl = new BotController();
-        
+
         try {
             Statement stt = BotDBConnection.getInstance().getConnection().createStatement();
             ResultSet rs = stt.executeQuery("SELECT * FROM articles WHERE status = 1 ORDER BY createAt DESC");
             if (rs.next()) {
-                if (articles.size() == 0) {
+                if (articles.isEmpty()) {
                     while (rs.next()) {
                         String title = rs.getString("title");
                         String urlDB = rs.getString("url");
@@ -57,7 +58,7 @@ public class BotModel {
             System.err.println(e);
         }
     }
-    
+
     public void getUrl(String url, String title) {
         try {
             Connection cnn = BotDBConnection.getInstance().getConnection();
@@ -78,7 +79,7 @@ public class BotModel {
             System.err.println(e);
         }
     }
-    
+
     public void botDelay() {
         try {
             Connection cnn = BotDBConnection.getInstance().getConnection();
@@ -135,7 +136,7 @@ public class BotModel {
             System.err.println(e);
         }
     }
-    
+
     public int getDetail(int indexArticles) {
         System.out.println("===================================");
         System.out.println(articles.get(indexArticles).getName());

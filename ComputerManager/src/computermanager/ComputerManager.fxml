@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="computermanager.ComputerManagerController">
+   <children>
+      <Label layoutX="59.0" layoutY="40.0" text="Computer ID:" />
+      <TextField fx:id="id" layoutX="195.0" layoutY="36.0" onKeyTyped="#checkValue" prefHeight="25.0" prefWidth="321.0" />
+      <TextField fx:id="name" layoutX="195.0" layoutY="85.0" onKeyTyped="#checkValue" prefHeight="25.0" prefWidth="321.0" />
+      <Label layoutX="60.0" layoutY="89.0" text="Computer Name:" />
+      <TextField fx:id="producer" layoutX="195.0" layoutY="134.0" onKeyTyped="#checkValue" prefHeight="25.0" prefWidth="321.0" />
+      <Label layoutX="59.0" layoutY="138.0" text="Producer:" />
+      <Label layoutX="60.0" layoutY="188.0" text="Year Making:" />
+      <TextField fx:id="yearmaking" layoutX="195.0" layoutY="184.0" onKeyTyped="#checkValue" prefHeight="25.0" prefWidth="321.0" />
+      <TextField fx:id="price" layoutX="195.0" layoutY="235.0" onKeyTyped="#checkValue" prefHeight="25.0" prefWidth="321.0" />
+      <Label layoutX="60.0" layoutY="239.0" text="Price:" />
+      <Separator layoutX="53.0" layoutY="299.0" prefWidth="500.0" />
+      <Button fx:id="first" layoutX="59.0" layoutY="333.0" mnemonicParsing="false" prefWidth="70.0" text="First">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="previous" layoutX="189.0" layoutY="333.0" mnemonicParsing="false" prefWidth="70.0" text="Previous">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="next" layoutX="311.0" layoutY="333.0" mnemonicParsing="false" prefWidth="70.0" text="Next">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="last" layoutX="446.0" layoutY="333.0" mnemonicParsing="false" prefWidth="70.0" text="Last">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="insert" layoutX="60.0" layoutY="396.0" mnemonicParsing="false" prefWidth="70.0" text="Insert">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="update" layoutX="189.0" layoutY="396.0" mnemonicParsing="false" prefWidth="70.0" text="Update">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="delete" layoutX="311.0" layoutY="396.0" mnemonicParsing="false" prefWidth="70.0" text="Delete">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="save" disable="true" layoutX="446.0" layoutY="396.0" mnemonicParsing="false" onAction="#saveToDb" prefWidth="70.0" text="Save">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="tableComputer" layoutY="453.0" prefHeight="247.0" prefWidth="600.0" />
+   </children>
+</AnchorPane>
