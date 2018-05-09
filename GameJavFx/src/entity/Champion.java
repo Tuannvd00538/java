@@ -15,7 +15,7 @@ public class Champion implements Serializable {
 
     @Override
     public String toString() {
-        return "Champion{" + "id=" + id + ", img=" + img + ", x=" + x + ", y=" + y + ", w=" + w + ", h=" + h + ", ox=" + ox + ", oy=" + oy + ", onAction=" + onAction + '}';
+        return "Champion{" + "id=" + id + ", img=" + img + ", x=" + x + ", y=" + y + ", w=" + w + ", h=" + h + ", ox=" + ox + ", oy=" + oy + '}';
     }
 
     private long id;
@@ -26,15 +26,6 @@ public class Champion implements Serializable {
     private int h;
     private int ox;
     private int oy;
-    private String onAction;
-
-    public String getOnAction() {
-        return onAction;
-    }
-
-    public void setOnAction(String onAction) {
-        this.onAction = onAction;
-    }
 
     public long getId() {
         return id;
@@ -58,18 +49,6 @@ public class Champion implements Serializable {
 
     public void setOy(int oy) {
         this.oy = oy;
-    }
-
-    public Champion(long id, String img, int x, int y, int w, int h, int ox, int oy, String onAction) {
-        this.id = id;
-        this.img = img;
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.ox = ox;
-        this.oy = oy;
-        this.onAction = onAction;
     }
 
     public Champion(long id, String img, int x, int y, int w, int h, int ox, int oy) {

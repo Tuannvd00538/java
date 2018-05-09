@@ -50,9 +50,8 @@ public class NinjaClient extends Application {
     private final String W = "/img/W.png";
     private final String E = "/img/E.png";
     private final String R = "/img/R.png";
-    private final String currentImageUrl = "/img/default.png";
+    private String currentImageUrl = "/img/default.png";
     private Image face;
-    private String onAction;
 
     @Override
     public void start(Stage theStage) throws Exception {
@@ -85,14 +84,13 @@ public class NinjaClient extends Application {
                 this.width, this.height, false, false);
         gc.drawImage(face, this.minX, this.minY);
         Champion p = new Champion(this.clientId,
-                currentImageUrl, this.minX, this.minY, this.width, this.height, this.minX, this.minY, this.onAction);
+                currentImageUrl, this.minX, this.minY, this.width, this.height, this.minX, this.minY);
         this.oos.writeObject(p);
         this.oos.flush();
 
         theScene.setOnKeyPressed((event) -> {
             int ox = this.minX;
             int oy = this.minY;
-            String action = this.onAction;
             if (null != event.getCode()) {
                 switch (event.getCode()) {
                     case RIGHT:
@@ -133,29 +131,33 @@ public class NinjaClient extends Application {
                         break;
                     case Q:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.Q;
                         this.face = new Image(
-                                this.Q,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
                     case W:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.W;
                         this.face = new Image(
-                                this.W,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
                     case E:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.E;
                         this.face = new Image(
-                                this.E,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
                     case R:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.R;
                         this.face = new Image(
-                                this.R,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
@@ -164,7 +166,7 @@ public class NinjaClient extends Application {
                 }
                 try {
                     this.oos.writeObject(new Champion(this.clientId,
-                            currentImageUrl, this.minX, this.minY, this.width, this.height, ox, oy, action));
+                            this.currentImageUrl, this.minX, this.minY, this.width, this.height, ox, oy));
                     this.oos.flush();
                 } catch (IOException e) {
                     System.err.println(e);

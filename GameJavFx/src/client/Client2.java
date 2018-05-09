@@ -50,7 +50,7 @@ public class Client2 extends Application{
     private final String W = "/img/W.png";
     private final String E = "/img/E.png";
     private final String R = "/img/R.png";
-    private final String currentImageUrl = "/img/default.png";
+    private String currentImageUrl = "/img/default.png";
     private Image face;
 
     @Override
@@ -131,29 +131,33 @@ public class Client2 extends Application{
                         break;
                     case Q:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.Q;
                         this.face = new Image(
-                                this.Q,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
                     case W:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.W;
                         this.face = new Image(
-                                this.W,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
                     case E:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.E;
                         this.face = new Image(
-                                this.E,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;
                     case R:
                         gc.clearRect(this.minX, this.minY, this.width, this.height);
+                        this.currentImageUrl = this.R;
                         this.face = new Image(
-                                this.R,
+                                this.currentImageUrl,
                                 this.width, this.height, false, false);
                         gc.drawImage(face, this.minX, this.minY);
                         break;

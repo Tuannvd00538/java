@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -59,11 +60,21 @@
       </Pane>
       <Pane fx:id="articlePageGenk" prefHeight="600.0" prefWidth="1000.0" visible="false">
          <children>
-            <ListView fx:id="listArticles" layoutX="14.0" layoutY="14.0" prefHeight="563.0" prefWidth="972.0">
+            <ListView fx:id="listArticles" layoutX="14.0" layoutY="43.0" prefHeight="534.0" prefWidth="972.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ListView>
-            <Label alignment="CENTER" layoutX="282.0" layoutY="580.0" prefHeight="17.0" prefWidth="436.0" text="Double click to select the article - Copyright © Ngô Văn Tuấn" />
+            <Label alignment="CENTER" layoutX="237.0" layoutY="578.0" prefHeight="17.0" prefWidth="526.0" text="Double click to select the article - right click to edit or delete - Copyright © Ngô Văn Tuấn" />
+            <TextField fx:id="valueSearch" layoutX="739.0" layoutY="10.0" onKeyPressed="#search" prefHeight="25.0" prefWidth="247.0" promptText="Tìm kiếm..." />
+            <Label layoutX="677.0" layoutY="14.0" text="Tìm Kiếm:" />
+            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#quaylai" style="-fx-background-color: red;" text="Quay lại" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
       <Pane fx:id="detailPage" prefHeight="600.0" prefWidth="1000.0" visible="false">
@@ -77,6 +88,30 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="edit" prefHeight="600.0" prefWidth="1000.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Tiêu Đề:" />
+            <TextField fx:id="titleArticle" layoutX="14.0" layoutY="41.0" prefHeight="36.0" prefWidth="972.0" />
+            <Label layoutX="14.0" layoutY="83.0" text="Nội Dung:" />
+            <Button layoutX="15.0" layoutY="561.0" mnemonicParsing="false" onAction="#huy" style="-fx-background-color: red;" text="Hủy" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="68.0" layoutY="561.0" mnemonicParsing="false" onAction="#saveEdit" style="-fx-background-color: green;" text="Lưu" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextArea fx:id="contentArticle" layoutX="15.0" layoutY="107.0" prefHeight="441.0" prefWidth="972.0" />
          </children>
       </Pane>
    </children>
