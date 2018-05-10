@@ -280,7 +280,7 @@ public class SiinReaderController implements Initializable {
     public void search() {
         try {
             Statement stt = BotDBConnection.getInstance().getConnection().createStatement();
-            ResultSet rs = stt.executeQuery("SELECT * FROM articles WHERE title LIKE '" + valueSearch.getText() + "%' AND status = 1");
+            ResultSet rs = stt.executeQuery("SELECT * FROM articles WHERE title LIKE '%" + valueSearch.getText() + "%' AND status = 1");
             ObservableList<String> items = FXCollections.observableArrayList();
             siin.clear();
             listArticles.getItems().clear();
