@@ -57,7 +57,8 @@ public class Controller {
 
     public void saveStudent() throws FileNotFoundException, IOException {
         FileOutputStream fos = new FileOutputStream("students.dat");
-        try (OutputStreamWriter osw = new OutputStreamWriter(fos); BufferedWriter bw = new BufferedWriter(osw)) {
+        try (OutputStreamWriter osw = new OutputStreamWriter(fos);
+                BufferedWriter bw = new BufferedWriter(osw)) {
             bw.write("----------------------------------------------------------------------------");
             bw.newLine();
             bw.write(String.format("%-20s | %-40s | %-20s", "EnrolID", "Full Name", "Age"));

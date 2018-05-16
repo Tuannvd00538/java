@@ -48,7 +48,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Button fx:id="loginButton" disable="true" layoutX="632.0" layoutY="308.0" mnemonicParsing="false" onAction="#loginAction" styleClass="btn" stylesheets="@Siin.css" text="»" visible="false" />
+            <Button fx:id="loginButton" disable="true" layoutX="632.0" layoutY="308.0" mnemonicParsing="false" onAction="#loginAction" styleClass="btn" stylesheets="@Siin.css" text="»" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </Pane>
    </children>

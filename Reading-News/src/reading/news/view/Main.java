@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +26,9 @@ public class Main extends Application {
         Parent root = fxmlloader.load();
         Scene scene = new Scene(root, 1000, 600);
         stage.setTitle("iSiin");
-        this.stage = stage;
+        stage.getIcons().add(new Image(Main.class.getResourceAsStream("/reading/news/img/icon.png")));
+        Main.stage = stage;
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

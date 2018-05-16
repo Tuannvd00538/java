@@ -17,7 +17,7 @@ public class DBConnection {
 
     private Connection cnn = null;
     private final String CONNECTION_URL = "jdbc:mysql://localhost:3306/";
-    private final String DATABASE = "reading-news";
+    private final String DATABASE = "isiin";
     private final String USERNAME = "root";
     private final String PASSWORD = "";
     private final String UTF8_URL = "?useUnicode=true&characterEncoding=utf-8";

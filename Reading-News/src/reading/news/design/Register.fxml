@@ -30,11 +30,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <TextField fx:id="usernameRegister" layoutX="277.0" layoutY="92.0" prefHeight="44.0" prefWidth="446.0" promptText="Username" />
-            <PasswordField fx:id="passwordRegister" layoutX="277.0" layoutY="157.0" prefHeight="44.0" prefWidth="446.0" promptText="Password" />
-            <PasswordField fx:id="repassRegister" layoutX="277.0" layoutY="221.0" prefHeight="44.0" prefWidth="446.0" promptText="Confirm Password" />
-            <TextField fx:id="emailRegister" layoutX="277.0" layoutY="286.0" prefHeight="44.0" prefWidth="446.0" promptText="name@example.com" />
-            <CheckBox layoutX="277.0" layoutY="360.0" mnemonicParsing="false" text="I agree to all terms of Siin">
+            <TextField fx:id="usernameRegister" layoutX="277.0" layoutY="92.0" onKeyPressed="#checkEmptyRegister" prefHeight="44.0" prefWidth="446.0" promptText="Username" styleClass="textF" stylesheets="@Siin.css" />
+            <PasswordField fx:id="passwordRegister" layoutX="277.0" layoutY="157.0" onKeyPressed="#checkEmptyRegister" prefHeight="44.0" prefWidth="446.0" promptText="Password" styleClass="textF" stylesheets="@Siin.css" />
+            <PasswordField fx:id="repassRegister" layoutX="277.0" layoutY="221.0" onKeyPressed="#checkEmptyRegister" prefHeight="44.0" prefWidth="446.0" promptText="Confirm Password" styleClass="textF" stylesheets="@Siin.css" />
+            <TextField fx:id="emailRegister" layoutX="277.0" layoutY="286.0" onKeyPressed="#checkEmptyRegister" prefHeight="44.0" prefWidth="446.0" promptText="name@example.com" styleClass="textF" stylesheets="@Siin.css" />
+            <CheckBox fx:id="confirmTerm" layoutX="277.0" layoutY="360.0" mnemonicParsing="false" text="I agree to all terms of Siin">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -53,10 +53,13 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="581.0" layoutY="549.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="Cancel" textFill="#0070c9">
+      <Button layoutX="581.0" layoutY="549.0" mnemonicParsing="false" onAction="#loginClickPane" prefHeight="25.0" prefWidth="68.0" text="Cancel" textFill="#0070c9">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="672.0" layoutY="549.0" mnemonicParsing="false" onAction="#registerButton" styleClass="btnContinue" stylesheets="@Siin.css" text="Continue" textFill="WHITE">
          <cursor>
