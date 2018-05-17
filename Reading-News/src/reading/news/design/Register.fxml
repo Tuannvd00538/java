@@ -40,8 +40,8 @@
                </font>
             </CheckBox>
             <Separator layoutX="300.0" layoutY="408.0" prefWidth="400.0" />
-            <Label layoutX="342.0" layoutY="423.0" text="Siin is committed to protecting your privacy." />
-            <Label layoutX="582.0" layoutY="423.0" text="Learn more…" textFill="#0070c9">
+            <Label layoutX="325.0" layoutY="423.0" text="Siin is committed to protecting your privacy." />
+            <Label layoutX="603.0" layoutY="423.0" text="Learn more…" textFill="#0070c9">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

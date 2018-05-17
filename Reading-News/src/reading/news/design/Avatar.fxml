@@ -27,7 +27,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="nextToMainBtn" disable="true" layoutX="923.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextToMain" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #0070c9;" text="Next" textFill="WHITE">
+      <Button fx:id="nextToMainBtn" layoutX="923.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextToMain" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #0070c9;" text="Next" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -37,8 +37,8 @@
       </Button>
       <Label layoutX="300.0" layoutY="397.0" text="Full Name:" />
       <Separator layoutX="300.0" layoutY="364.0" prefWidth="400.0" />
-      <TextField fx:id="fullName" layoutX="373.0" layoutY="384.0" prefHeight="42.0" prefWidth="327.0" />
+      <TextField fx:id="fullName" layoutX="373.0" layoutY="384.0" prefHeight="42.0" prefWidth="327.0" promptText="Full Name" />
       <Label layoutX="300.0" layoutY="459.0" text="Birth Day:" />
-      <DatePicker fx:id="birthDay" layoutX="373.0" layoutY="446.0" prefHeight="42.0" prefWidth="327.0" />
+      <DatePicker fx:id="birthDay" layoutX="373.0" layoutY="446.0" prefHeight="42.0" prefWidth="327.0" promptText="11/26/1999" />
    </children>
 </AnchorPane>

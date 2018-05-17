@@ -16,10 +16,10 @@ import java.sql.SQLException;
 public class DBConnection {
 
     private Connection cnn = null;
-    private final String CONNECTION_URL = "jdbc:mysql://localhost:3306/";
+    private final String CONNECTION_URL = "jdbc:mysql://192.168.64.2:3306/";
     private final String DATABASE = "isiin";
-    private final String USERNAME = "root";
-    private final String PASSWORD = "";
+    private final String USERNAME = "siin";
+    private final String PASSWORD = "siindz";
     private final String UTF8_URL = "?useUnicode=true&characterEncoding=utf-8";
     public static DBConnection instance;
 

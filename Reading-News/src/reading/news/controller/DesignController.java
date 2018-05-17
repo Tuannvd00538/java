@@ -220,6 +220,9 @@ public class DesignController implements Initializable {
     }
 
     @FXML
+    String urlImage;
+
+    @FXML
     public void uploadAvatar(File file) {
         try {
             BufferedImage bufferedImage = ImageIO.read(file);
@@ -258,13 +261,9 @@ public class DesignController implements Initializable {
             String jsonString = stb.toString();
             JSONObject objectJson = new JSONObject(jsonString);
             String abc = objectJson.getJSONObject("data").getString("link");
-            String fullname = this.fullName.getText();
-            LocalDate birthday = this.birthDay.getValue();
-            String bd = birthday.toString();
-            if (um.setInfo(abc, fullname, bd)) {
-                avatar.setImage(image);
-                nextToMainBtn.setDisable(false);
-            }
+            urlImage = abc;
+            avatar.setImage(image);
+            conn.disconnect();
         } catch (IOException ex) {
             Logger.getLogger(DesignController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -277,19 +276,40 @@ public class DesignController implements Initializable {
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
         File file = fileChooser.showOpenDialog(null);
-        if (file == null) {
-            System.out.println("Vui lòng chọn ảnh");
-        } else {
-            uploadAvatar(file);
-        }
+        uploadAvatar(file);
     }
 
     @FXML
     public void nextToMain() throws IOException {
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/reading/news/design/MainChat.fxml"));
-        Parent register = fxmlloader.load();
-        stage.getScene().setRoot(register);
-        MainChatController mcc = new MainChatController();
-        mcc.getInfo();
+        if (updateInfo()) {
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/reading/news/design/MainChat.fxml"));
+            Parent register = fxmlloader.load();
+            stage.getScene().setRoot(register);
+            MainChatController mcc = new MainChatController();
+            mcc.getInfo();
+        } else {
+            System.err.println("Error!");
+        }
     }
+
+    @FXML
+    public boolean updateInfo() {
+        String fullname = this.fullName.getText();
+        LocalDate birthday = this.birthDay.getValue();
+        String bd = birthday.toString();
+        if (um.setInfo(urlImage, fullname, bd)) {
+            nextToMainBtn.setDisable(false);
+            return true;
+        }
+        return false;
+    }
+    
+//    @FXML
+//    public void checkUpdateInfo() {
+//        if (fullName.getText().isEmpty()) {
+//            System.err.println("Please enter your full name!");
+//        } else {
+//            nextToMainBtn.setDisable(false);
+//        }
+//    }
 }

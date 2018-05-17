@@ -37,18 +37,18 @@
                </font>
             </CheckBox>
             <Separator layoutX="401.0" layoutY="382.0" prefWidth="200.0" />
-            <Label layoutX="428.0" layoutY="397.0" prefHeight="20.0" prefWidth="154.0" text="Forgot Siin ID or password?">
+            <Label layoutX="414.0" layoutY="395.0" prefHeight="20.0" prefWidth="172.0" text="Forgot Siin ID or password?">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
             <Label layoutX="381.0" layoutY="425.0" prefHeight="20.0" prefWidth="154.0" text="Don't have an Siin ID?" />
-            <Label layoutX="500.0" layoutY="425.0" onMouseClicked="#registerPane" prefHeight="20.0" prefWidth="154.0" text="Create yours now." textFill="#0070c9">
+            <Label layoutX="518.0" layoutY="425.0" onMouseClicked="#registerPane" prefHeight="20.0" prefWidth="154.0" text="Create yours now." textFill="#0070c9">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Button fx:id="loginButton" disable="true" layoutX="632.0" layoutY="308.0" mnemonicParsing="false" onAction="#loginAction" styleClass="btn" stylesheets="@Siin.css" text="»" visible="false">
+            <Button fx:id="loginButton" disable="true" layoutX="635.0" layoutY="308.0" mnemonicParsing="false" onAction="#loginAction" styleClass="btn" stylesheets="@Siin.css" text="»" visible="false">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
