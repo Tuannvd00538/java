@@ -16,7 +16,7 @@ import reading.news.entity.User;
  * @author biidz
  */
 public class UserModel {
-    
+
     public static User siindeptrai = null;
 
     public boolean register(User user) {
@@ -61,13 +61,15 @@ public class UserModel {
             ps.setString(2, Md5Password.md5(password));
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                int idLogin = rs.getInt("id");
-                String usernameLogin = rs.getString("username");
-                String passwordLogin = rs.getString("password");
-                String emailLogin = rs.getString("email");
-                long createdTimeLogin = rs.getLong("createdTime");
-                User user = new User(idLogin, username, password, emailLogin, createdTimeLogin);
-                return user;
+                int idRs = rs.getInt("id");
+                String usernameRs = rs.getString("username");
+                String fullNameRs = rs.getString("fullName");
+                String birthDayRs = rs.getString("birthDay");
+                String avatarRs = rs.getString("avatar");
+                int statusRs = rs.getInt("status");
+                User userRs = new User(idRs, usernameRs, birthDayRs, fullNameRs, avatarRs, statusRs);
+                siindeptrai = userRs;
+                return userRs;
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());

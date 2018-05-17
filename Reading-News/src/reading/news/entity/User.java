@@ -15,7 +15,11 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String birthDay;
+    private String fullName;
+    private String avatar;
     private long createdTime;
+    private int status;
 
     public User() {
     }
@@ -39,6 +43,23 @@ public class User {
         this.password = password;
         this.email = email;
         this.createdTime = createdTime;
+    }
+
+    public User(int id, String username, String birthDay, String fullName, String avatar, int status) {
+        this.id = id;
+        this.username = username;
+        this.birthDay = birthDay;
+        this.fullName = fullName;
+        this.avatar = avatar;
+        this.status = status;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public int getId() {
@@ -79,6 +100,30 @@ public class User {
 
     public void setCreatedTime(long createdTime) {
         this.createdTime = createdTime;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,8 +9,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="reading.news.controller.MainChatController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reading.news.controller.MainChatController">
     <stylesheets>
         <URL value="@Siin.css" />
     </stylesheets>
+   <children>
+      <Pane prefHeight="600.0" prefWidth="280.0">
+         <children>
+            <Separator layoutX="280.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="3.0" />
+            <Separator layoutX="33.0" layoutY="99.0" prefHeight="9.0" prefWidth="214.0" />
+            <ImageView fx:id="avatarMain" fitHeight="45.0" fitWidth="46.0" layoutX="25.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameMain" layoutX="83.0" layoutY="28.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="54.0" text="Nhà em có bán rượu không :D" />
+         </children>
+      </Pane>
+      <Pane layoutX="280.0" prefHeight="600.0" prefWidth="719.0" />
+   </children>
 </AnchorPane>

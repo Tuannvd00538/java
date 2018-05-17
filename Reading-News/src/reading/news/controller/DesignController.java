@@ -289,5 +289,7 @@ public class DesignController implements Initializable {
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/reading/news/design/MainChat.fxml"));
         Parent register = fxmlloader.load();
         stage.getScene().setRoot(register);
+        MainChatController mcc = new MainChatController();
+        mcc.getInfo();
     }
 }
