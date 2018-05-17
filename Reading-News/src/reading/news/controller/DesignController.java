@@ -5,22 +5,41 @@
  */
 package reading.news.controller;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 import reading.news.entity.User;
 import reading.news.model.UserModel;
 import static reading.news.view.Main.stage;
+import org.json.*;
 
 /**
  *
@@ -48,6 +67,14 @@ public class DesignController implements Initializable {
     private TextField emailRegister;
     @FXML
     private CheckBox confirmTerm;
+    @FXML
+    private ImageView avatar;
+    @FXML
+    private Button nextToMainBtn;
+    @FXML
+    private TextField fullName;
+    @FXML
+    private DatePicker birthDay;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,12 +119,12 @@ public class DesignController implements Initializable {
     }
 
     @FXML
-    private void loginAction() {
+    private void loginAction() throws IOException {
         String username = usernameLogin.getText();
         String password = passwordLogin.getText();
         User us = um.login(username, password);
         if (us != null) {
-            System.out.println(us.getUsername());
+            nextToMain();
         } else {
             passwordLogin.setStyle("-fx-border-color: red");
         }
@@ -152,11 +179,12 @@ public class DesignController implements Initializable {
     }
 
     @FXML
-    private void registerButton() {
+    private void registerButton() throws IOException {
+        int id = (int) System.currentTimeMillis();
         String username = usernameRegister.getText();
         String password = passwordRegister.getText();
         String email = emailRegister.getText();
-        User user = new User(username, password, email);
+        User user = new User(id, username, password, email);
         HashMap<String, String> err = erorrs(user);
         if (!err.isEmpty()) {
             for (Map.Entry<String, String> entry : err.entrySet()) {
@@ -178,13 +206,88 @@ public class DesignController implements Initializable {
             }
             return;
         } else if (!confirmTerm.isSelected()) {
-            System.err.println("Please tick");
+            System.out.println("Please tick");
         } else if (um.checkExitUser(username)) {
-            System.err.println("Tài khoản đã tồn tại!");
+            System.out.println("Tài khoản đã tồn tại!");
         } else if (um.register(user)) {
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/reading/news/design/Avatar.fxml"));
+            Parent register = fxmlloader.load();
+            stage.getScene().setRoot(register);
             System.out.println("Đăng ký thành công!");
         } else {
             System.err.println("Có lỗi xảy ra!");
         }
+    }
+
+    @FXML
+    public void uploadAvatar(File file) {
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", byteArray);
+            byte[] byteImage = byteArray.toByteArray();
+            String dataImage = Base64.encode(byteImage);
+            String data = URLEncoder.encode("image", "UTF-8") + "="
+                    + URLEncoder.encode(dataImage, "UTF-8");
+            URL url = new URL("https://api.imgur.com/3/image");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Authorization", "Client-ID ecea6e24d5bff94");
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type",
+                    "application/x-www-form-urlencoded");
+
+            conn.connect();
+            StringBuilder stb = new StringBuilder();
+            BufferedReader rd;
+            try (OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream())) {
+                wr.write(data);
+                wr.flush();
+                // Get the response
+                rd = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+                String line;
+                while ((line = rd.readLine()) != null) {
+                    stb.append(line).append("\n");
+                }
+            }
+            rd.close();
+            String jsonString = stb.toString();
+            JSONObject objectJson = new JSONObject(jsonString);
+            String abc = objectJson.getJSONObject("data").getString("link");
+            String fullname = this.fullName.getText();
+            LocalDate birthday = this.birthDay.getValue();
+            String bd = birthday.toString();
+            if (um.setInfo(abc, fullname, bd)) {
+                avatar.setImage(image);
+                nextToMainBtn.setDisable(false);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DesignController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    public void chooseAvatar() {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+        File file = fileChooser.showOpenDialog(null);
+        if (file == null) {
+            System.out.println("Vui lòng chọn ảnh");
+        } else {
+            uploadAvatar(file);
+        }
+    }
+
+    @FXML
+    public void nextToMain() throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/reading/news/design/MainChat.fxml"));
+        Parent register = fxmlloader.load();
+        stage.getScene().setRoot(register);
     }
 }

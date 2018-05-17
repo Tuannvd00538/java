@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reading.news.controller.DesignController">
+    <stylesheets>
+        <URL value="@Siin.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="avatar" fitHeight="270.0" fitWidth="330.0" layoutX="365.0" layoutY="56.0" onMouseClicked="#chooseAvatar" pickOnBounds="true" preserveRatio="true" styleClass="avatarSelect">
+         <image>
+            <Image url="@../img/add.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="401.0" layoutY="326.0" prefHeight="28.0" prefWidth="198.0" text="Click to select your avatar">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="nextToMainBtn" disable="true" layoutX="923.0" layoutY="557.0" mnemonicParsing="false" onAction="#nextToMain" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #0070c9;" text="Next" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="300.0" layoutY="397.0" text="Full Name:" />
+      <Separator layoutX="300.0" layoutY="364.0" prefWidth="400.0" />
+      <TextField fx:id="fullName" layoutX="373.0" layoutY="384.0" prefHeight="42.0" prefWidth="327.0" />
+      <Label layoutX="300.0" layoutY="459.0" text="Birth Day:" />
+      <DatePicker fx:id="birthDay" layoutX="373.0" layoutY="446.0" prefHeight="42.0" prefWidth="327.0" />
+   </children>
+</AnchorPane>
