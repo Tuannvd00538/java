@@ -35,15 +35,21 @@ public class Test_Java {
         
         
 //        câu 5
-//        System.out.println("Nhập chuỗi thứ nhất:");
-//        String string1 = input.nextLine();
-//        System.out.println("Nhập chuỗi thứ hai:");
-//        String string2 = input.nextLine();
-//        boolean siin = false;
-//        if (string1.contains(string2)) {
-//            siin = true;
-//        }
-//        System.out.println(siin);
+        System.out.println("Nhập chuỗi thứ nhất:");
+        String string1 = input.nextLine();
+        System.out.println("Nhập chuỗi thứ hai:");
+        String string2 = input.nextLine();
+        String[] parts = string1.split(" ");
+        boolean siin = false;
+        for (String part : parts) {
+            if (part.endsWith(string2)) {
+                siin = true;
+                break;
+            } else {
+                siin = false;
+            }
+        }
+        System.out.println(siin);
     }
     
 }
