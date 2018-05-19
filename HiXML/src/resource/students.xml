@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<students>
+    <student id="1">
+        <rollNumber>A001</rollNumber>
+        <name>Ngô Văn Tuấn</name>
+        <email>tuannvd00538@fpt.edu.vn</email>
+        <phone>0987773751</phone>
+        <address>Hà Nội</address>
+        <status>1</status>
+    </student>
+    <student id="2">
+        <rollNumber>A002</rollNumber>
+        <name>Hoàng Sang</name>
+        <email>hoangsang@fpt.edu.vn</email>
+        <phone>0124567890</phone>
+        <address>Hà Nội</address>
+        <status>2</status>
+    </student>
+    <student id="3">
+        <rollNumber>A003</rollNumber>
+        <name>Đào Duy Khánh</name>
+        <email>khanhdk@fpt.edu.vn</email>
+        <phone>09876543211</phone>
+        <address>Hà Nội</address>
+        <status>1</status>
+    </student>
+</students>
